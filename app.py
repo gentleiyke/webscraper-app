@@ -58,7 +58,7 @@ if st.button("Start Scraping"):
                     mime="text/csv",
                 )
                 
-          except Exception as e:
+        except Exception as e:
             st.error(f"An error occurred: {e}")
     else:
         st.error("Please enter at least one URL.")
