@@ -26,7 +26,7 @@ if st.button("Start Scraping"):
             # Run the scraper asynchronously
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
-            companies_data = loop.run_until_complete(await scrape_multiple_urls(url_list, max_pages=max_pages))
+            companies_data = loop.run_until_complete(scrape_multiple_urls(url_list, max_pages=max_pages))
 
             # Save the reviews data to a JSON file
             save_to_json(companies_data, "companies_data.json")
