@@ -30,7 +30,16 @@ if st.button("Start Scraping"):
 
             # Save the reviews data to a JSON file
             save_to_json(companies_data, "companies_data.json")
-            st.success("Scraping completed! Data saved to `companies_data.json`.")
+            st.success("Scraping completed! Data Ready!!")
+            
+            # Provide JSON download option
+            json_data = json.dumps(companies_data, indent=2).encode('utf-8')
+            st.download_button(
+                label="Download All Data as JSON",
+                data=json_data,
+                file_name="companies_data.json",
+                mime="application/json",
+            )
 
             # Convert reviews to DataFrames
             url_to_df = reviews_to_dataframe(companies_data)
@@ -38,7 +47,7 @@ if st.button("Start Scraping"):
             # Display results for each URL
             for url, df in url_to_df.items():
                 st.subheader(f"Results for {url}")
-                st.dataframe(df)
+                st.dataframe(df.head())
 
                 # Provide CSV download option
                 csv = df.to_csv(index=False).encode('utf-8')
@@ -48,8 +57,8 @@ if st.button("Start Scraping"):
                     file_name=f"{url.split('/')[-1]}_reviews.csv",
                     mime="text/csv",
                 )
-
-        except Exception as e:
+                
+          except Exception as e:
             st.error(f"An error occurred: {e}")
     else:
         st.error("Please enter at least one URL.")
@@ -61,6 +70,22 @@ st.markdown(
     ---
     **Note:** This app uses Trustpilot's public API and may be subject to rate limits or restrictions. 
     Use responsibly.
-    <b>Disclaimer:</b> Only web scrape publicly available data and website terms of service and use APIs where available.
+    **Disclaimer:** Only web scrape publicly available data and website terms of service and use APIs where available.
     """
 )
+
+
+
+            # Provide JSON download option
+            json_data = json.dumps(companies_data, indent=2).encode('utf-8')
+            st.download_button(
+                label="Download All Data as JSON",
+                data=json_data,
+                file_name="companies_data.json",
+                mime="application/json",
+            )
+
+            # Convert reviews to DataFrames
+            url_to_df = reviews_to_dataframe(companies_data)
+
+            
