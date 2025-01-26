@@ -19,6 +19,12 @@ if "scraped_data" not in st.session_state:
 urls = st.text_area("Enter Trustpilot URLs (one per line)", height=150)
 max_pages = st.number_input("Maximum Pages to Scrape", min_value=1, max_value=50, value=10)
 
+# Reset session state and clear scraped data
+if st.button("Scrape New URLs"):
+    st.session_state.scraped_data = None
+    st.experimental_rerun()  # Reloads the app
+
+# Scraping process
 if st.button("Start Scraping"):
     if urls.strip():
         # Convert URLs to a list
