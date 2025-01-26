@@ -1,6 +1,6 @@
 pandas
 aiohttp
-json5-0.10.0
+json5
 typing-3.7.4.3
 parsel-1.9.1
 loguru-0.7.3
