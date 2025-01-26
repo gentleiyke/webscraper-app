@@ -4,4 +4,5 @@ json5
 typing
 parsel
 loguru
-httpx 
+httpx
+streamlit 
