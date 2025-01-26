@@ -58,12 +58,11 @@ if st.button("Start Scraping"):
                     mime="text/csv",
                 )
                 
-          except Exception as e:
+        except Exception as e:
             st.error(f"An error occurred: {e}")
     else:
         st.error("Please enter at least one URL.")
-        
-
+                
 # Footer
 st.markdown(
     """
@@ -73,19 +72,5 @@ st.markdown(
     **Disclaimer:** Only web scrape publicly available data and website terms of service and use APIs where available.
     """
 )
-
-
-
-            # Provide JSON download option
-            json_data = json.dumps(companies_data, indent=2).encode('utf-8')
-            st.download_button(
-                label="Download All Data as JSON",
-                data=json_data,
-                file_name="companies_data.json",
-                mime="application/json",
-            )
-
-            # Convert reviews to DataFrames
-            url_to_df = reviews_to_dataframe(companies_data)
 
             
