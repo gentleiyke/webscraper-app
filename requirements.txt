@@ -1,5 +1,5 @@
 pandas
-asyncio-3.4.3
+aiohttp
 json5-0.10.0
 typing-3.7.4.3
 parsel-1.9.1
