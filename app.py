@@ -11,7 +11,7 @@ custom_css = """
 <style>
     body {
         font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
+        background-color: #00b67a;
         color: #191919;
     }
     .stApp {
