@@ -49,6 +49,12 @@ custom_css = """
     .download-btn:hover {
         background-color: #006f43;
     }
+    .footer {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 12px;
+        color: #6c757d;
+    }
 </style>
 """
 
@@ -115,11 +121,12 @@ if st.button("Start Scraping"):
         st.error("Please enter at least one URL.")
 
 # Footer
-footer_html = """
-<div style="margin-top: 50px; padding: 20px; background-color: #f1f1f1; border-radius: 4px;">
-    <p><strong>Note:</strong> This app uses Trustpilot's public API and may be subject to rate limits or restrictions. Use responsibly.</p>
-    <p><strong>Disclaimer:</strong> Only web scrape publicly available data and website terms of service and use APIs where available.</p>
-</div>
-"""
-
-components.html(footer_html)
+st.markdown(
+    """
+    <div class='footer' style="margin-top: 50px; padding: 20px; background-color: #f1f1f1; border-radius: 4px;">
+        <p><strong>Note:</strong> This app uses Trustpilot's public API and may be subject to rate limits or restrictions. Use responsibly.</p>
+        <p><strong>Disclaimer:</strong> Only web scrape publicly available data and website terms of service and use APIs where available.</p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
