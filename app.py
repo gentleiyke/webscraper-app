@@ -38,18 +38,6 @@ custom_css = """
     .stButton > button:hover {
         background-color: #00a86b;
     }
-    .download-btn {
-        display: inline-block;
-        background-color: #007f4e;
-        color: white;
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 4px;
-        margin-top: 10px;
-    }
-    .download-btn:hover {
-        background-color: #006f43;
-    }
     .footer {
         text-align: justify;
         margin-top: 40px;
@@ -59,15 +47,21 @@ custom_css = """
 </style>
 """
 
-# Custom CSS
+# Add custom CSS
 st.markdown(custom_css, unsafe_allow_html=True)
+
+# Initialize session state variables
+if "scraped_data" not in st.session_state:
+    st.session_state.scraped_data = None
+if "dataframes" not in st.session_state:
+    st.session_state.dataframes = {}
 
 # Streamlit UI
 st.title("Company Reviews Scraper")
-st.markdown("<p class='description'>This is a simple web app to scrape customer's reviews from trustpilot. Enter company's trustpilot URLs (one per line) and the maximum number of pages to scrape is 50.</p>", unsafe_allow_html=True)
+st.markdown("<p class='description'>This is a simple web app to scrape customer's reviews from Trustpilot. Enter company's Trustpilot URLs (one per line) and the maximum number of pages to scrape is 50.</p>", unsafe_allow_html=True)
 
 # User Input Section
-urls = st.text_area("Enter Trustpilot URLs (one per line)", placeholder="https://www.trustpilot.com/review/company-name",height=150)
+urls = st.text_area("Enter Trustpilot URLs (one per line)", placeholder="https://www.trustpilot.com/review/company-name", height=150)
 max_pages = st.number_input("Number of Pages to Scrape (50 Max)", min_value=1, max_value=50, value=10)
 
 if st.button("Start Scraping"):
@@ -75,7 +69,7 @@ if st.button("Start Scraping"):
         # Convert URLs to a list
         url_list = urls.splitlines()
 
-        # Scrape reviews notice
+        # Inform the user scraping is in progress
         st.write("Scraping reviews... Please wait.")
 
         try:
@@ -84,41 +78,44 @@ if st.button("Start Scraping"):
             asyncio.set_event_loop(loop)
             companies_data = loop.run_until_complete(scrape_multiple_urls(url_list, max_pages=max_pages))
 
-            # Save the reviews data to a JSON file
-            save_to_json(companies_data, "companies_data.json")
-            st.success("Scraping completed! Data Ready!!")
-            
-            # Provide JSON download option
-            json_data = json.dumps(companies_data, indent=2).encode('utf-8')
-            st.download_button(
-                label="Download All Data as JSON",
-                data=json_data,
-                file_name="companies_data.json",
-                mime="application/json",
-            )
+            # Save data to session state
+            st.session_state.scraped_data = companies_data
 
-            # Convert reviews to DataFrames
+            # Process the data into DataFrames
             url_to_df = reviews_to_dataframe(companies_data)
+            st.session_state.dataframes = url_to_df
 
-            # Display reviews for each URL
-            for url, df in url_to_df.items():
-                st.subheader(f"Scraped URL: {url}")
-                st.text(f"Preview Data for {url.split('/')[-1]}")
-                st.dataframe(df.head())
-
-                # CSV download option
-                csv = df.to_csv(index=False).encode('utf-8')
-                st.download_button(
-                    label=f"Download CSV for {url.split('/')[-1]}",
-                    data=csv,
-                    file_name=f"{url.split('/')[-1]}_reviews.csv",
-                    mime="text/csv",
-                )
+            st.success("Scraping completed! Data Ready!!")
 
         except Exception as e:
             st.error(f"An error occurred: {e}")
     else:
         st.error("Please enter at least one URL.")
+
+# Display and download data if it exists in session state
+if st.session_state.scraped_data:
+    # Provide JSON download option
+    json_data = json.dumps(st.session_state.scraped_data, indent=2).encode('utf-8')
+    st.download_button(
+        label="Download All Data as JSON",
+        data=json_data,
+        file_name="companies_data.json",
+        mime="application/json",
+    )
+
+    # Display results for each URL
+    for url, df in st.session_state.dataframes.items():
+        st.subheader(f"Scraped URL: {url}")
+        st.dataframe(df.head())
+
+        # CSV download option
+        csv = df.to_csv(index=False).encode('utf-8')
+        st.download_button(
+            label=f"Download CSV for {url.split('/')[-1]}",
+            data=csv,
+            file_name=f"{url.split('/')[-1]}_reviews.csv",
+            mime="text/csv",
+        )
 
 # Footer
 st.markdown(
