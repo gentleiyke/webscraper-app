@@ -94,8 +94,8 @@ pip install -r requirements.txt
 - **Clone the Repository**
 
 ```
-git clone https://github.com/your-username/web_scraper.git
-cd web_scraper
+git clone https://github.com/your-username/webscraper-app.git
+cd webscraper-app
 ```
 
 - **Install Dependencies**
