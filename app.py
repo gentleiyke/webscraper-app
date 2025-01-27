@@ -58,7 +58,7 @@ custom_css = """
 </style>
 """
 
-# Inject custom CSS
+# Custom CSS
 st.markdown(custom_css, unsafe_allow_html=True)
 
 # Streamlit UI
@@ -75,7 +75,7 @@ if st.button("Start Scraping"):
         # Convert URLs to a list
         url_list = urls.splitlines()
 
-        # Inform the user scraping is in progress
+        # Scrape reviews notice
         st.write("Scraping reviews... Please wait.")
 
         try:
@@ -100,13 +100,13 @@ if st.button("Start Scraping"):
             # Convert reviews to DataFrames
             url_to_df = reviews_to_dataframe(companies_data)
 
-            # Display results for each URL
+            # Display reviews for each URL
             for url, df in url_to_df.items():
                 st.subheader(f"Scraped URL: {url}")
                 st.text(f"Preview Data for {url.split('/')[-1]}")
                 st.dataframe(df.head())
 
-                # Provide CSV download option
+                # CSV download option
                 csv = df.to_csv(index=False).encode('utf-8')
                 st.download_button(
                     label=f"Download CSV for {url.split('/')[-1]}",
