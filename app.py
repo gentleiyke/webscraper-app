@@ -96,7 +96,8 @@ if st.button("Start Scraping"):
 
             # Display results for each URL
             for url, df in url_to_df.items():
-                st.subheader(f"Results for {url}")
+                st.header(f"Scraped Results for {url}")
+                st.subheader(f"Preview Data for {url.split('/')[-1]}")
                 st.dataframe(df.head())
 
                 # Provide CSV download option
@@ -115,7 +116,7 @@ if st.button("Start Scraping"):
 
 # Footer
 footer_html = """
-<div style="margin: 50px; padding: 10px; background-color: #f1f1f1; border-radius: 4px;">
+<div style="margin-top: 50px; padding: 20px; background-color: #f1f1f1; border-radius: 4px;">
     <p><strong>Note:</strong> This app uses Trustpilot's public API and may be subject to rate limits or restrictions. Use responsibly.</p>
     <p><strong>Disclaimer:</strong> Only web scrape publicly available data and website terms of service and use APIs where available.</p>
 </div>
