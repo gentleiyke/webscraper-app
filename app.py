@@ -97,7 +97,7 @@ if st.button("Start Scraping"):
             # Display results for each URL
             for url, df in url_to_df.items():
                 st.subheader(f"Scraped URL: {url}")
-                st.text(f"Preview Data for {url.split('/')[-1]}")
+                st.text(f"<strong>Preview Data for {url.split('/')[-1]}</strong>")
                 st.dataframe(df.head())
 
                 # Provide CSV download option
