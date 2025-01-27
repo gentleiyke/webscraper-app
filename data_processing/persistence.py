@@ -7,8 +7,7 @@ def save_to_json(data: any, file_path: str):
         json.dump(data, file, indent=2, ensure_ascii=False)
     log.info(f"Scraped data for {file_path} successfully")
 
-def save_to_csv(df: any):
+def save_to_csv(df: pd.DataFrame, file_path: str):
     """Save DataFrame to a CSV file."""
-    # df.to_csv(file_path, index=False)
-    df.to_csv(index=False).encode('utf-8')
-    # log.info(f"Saved DataFrame to {file_path}")
+    df.to_csv(file_path, index=False)
+    log.info(f"Saved DataFrame to {file_path}")
