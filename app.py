@@ -65,7 +65,7 @@ st.markdown(custom_css, unsafe_allow_html=True)
 
 # Streamlit UI
 st.title("Company Reviews Scraper")
-st.markdown("<p class='description'>This is a simple web app to scrape customer reviews from Trustpilot. Enter Company's Trustpilot URLs (one per line) and the maximum number of pages to scrape is 50.</p>", unsafe_allow_html=True)
+st.markdown("<p class='description'>This is a simple web app to scrape customer's reviews from trustpilot. Enter company's trustpilot URLs (one per line) and the maximum number of pages to scrape is 50.</p>", unsafe_allow_html=True)
 
 # User Input Section
 urls = st.text_area("Enter Trustpilot URLs (one per line)", placeholder="https://www.trustpilot.com/review/company-name",height=150)
