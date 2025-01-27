@@ -50,8 +50,9 @@ custom_css = """
         background-color: #006f43;
     }
     .footer {
-        text-align: center;
+        text-align: justify;
         margin-top: 40px;
+        font-size: 14px;
         color: #6c757d;
     }
 </style>
