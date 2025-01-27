@@ -91,26 +91,26 @@ pip install -r requirements.txt
 
 ## **How to Use**
 
-- ** Clone the Repository **
+- **Clone the Repository**
 
 ```
 git clone https://github.com/your-username/web_scraper.git
 cd web_scraper
 ```
 
-** Install Dependencies **
+- **Install Dependencies**
 
 ```
 pip install -r requirements.txt
 ```
 
-** Run the Streamlit App **
+- **Run the Streamlit App**
 
 ```
 streamlit run app.py
 ```
 
-** Interact with the App **
+- **Interact with the App**
 
 - Enter the Trustpilot URLs for businesses you want to scrape.
 - Specify the maximum number of review pages to scrape.
