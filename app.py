@@ -52,7 +52,6 @@ custom_css = """
     .footer {
         text-align: center;
         margin-top: 40px;
-        font-size: 12px;
         color: #6c757d;
     }
 </style>
