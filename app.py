@@ -18,8 +18,10 @@ custom_css = """
         max-width: 1000px;
         margin: 0 auto;
     }
-    h1 {
-        color: #00b67a;
+    .description {
+        text-align: justify;
+        font-size: 16px;
+        margin-bottom: 20px;
     }
     .stTextInput > div > div > input {
         background-color: #ffffff;
@@ -62,12 +64,11 @@ custom_css = """
 st.markdown(custom_css, unsafe_allow_html=True)
 
 # Streamlit UI
-st.title("Trustpilot Reviews Scraper")
-st.markdown("This is a simple web app to scrape reviews from Trustpilot.")
-st.markdown("Enter Trustpilot URLs (one per line) and the maximum number of pages to scrape is 50.")
+st.title("Company Reviews Scraper")
+st.markdown("<p class='description'>This is a simple web app to scrape customer reviews from Trustpilot. Enter Company's Trustpilot URLs (one per line) and the maximum number of pages to scrape is 50.</p>", unsafe_allow_html=True)
 
 # User Input Section
-urls = st.text_area("Enter Trustpilot URLs (one per line)", height=150)
+urls = st.text_area("Enter Trustpilot URLs (one per line)", placeholder="https://www.trustpilot.com/review/company-name",height=150)
 max_pages = st.number_input("Number of Pages to Scrape (50 Max)", min_value=1, max_value=50, value=10)
 
 if st.button("Start Scraping"):
