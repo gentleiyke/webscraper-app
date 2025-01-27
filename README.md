@@ -112,9 +112,9 @@ streamlit run app.py
 
 - **Interact with the App**
 
-- Enter the Trustpilot URLs for businesses you want to scrape.
-- Specify the maximum number of review pages to scrape.
-- Download the output in JSON or CSV format.
+   - Enter the Trustpilot URLs for businesses you want to scrape.
+   - Specify the maximum number of review pages to scrape.
+   - Download the output in JSON or CSV format.
 
 ---
 
