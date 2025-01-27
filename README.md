@@ -20,11 +20,9 @@ This project is an asynchronous web scraping application to extract reviews from
 web_scraper/
 ├── app.py                 # Streamlit App
 ├── scraping/
-│   ├── __init__.py         # Package initialiser
 │   ├── api_utils.py        # API utility functions
 │   ├── scraper.py          # Scraping logic
 ├── data_processing/
-│   ├── __init__.py         # Package initialiser
 │   ├── transform.py        # Data transformation
 │   ├── persistence.py      # Data saving utilities
 ├── config/
@@ -35,36 +33,7 @@ web_scraper/
 
 ---
 
-## **Setup and Installation**
-
-### **1. Clone the repository**
-
-```bash
-git clone https://github.com/your-username/web_scraper.git
-cd web_scraper
-```
-
-### **2. Install dependencies**
-
-Make sure you have Python 3.9+ installed. Install required packages:
-
-```bash
-pip install -r requirements.txt
-```
-
-### **3. Run the web scraper**
-
-Run the scraper to fetch reviews:
-
-```bash
-python app.py
-```
-
----
-
-## **How It Works**
-
-### **Modules**
+## **Modules**
 
 1. **`scraping/api_utils.py`**:
 
@@ -109,25 +78,6 @@ I used the following libraries this project:
 - **`pandas`**: For data transformation and normalization.
 - **`json5`**: For reading and writing JSON files.
 - **`streamlit`**: For creating an interactive web interface.
-
-Install all dependencies using `requirements.txt`.
-
----
-
-## **Future Enhancements**
-
-- Add support for proxy rotation and user-agent randomisation.
-- Integrate database support (e.g., PostgreSQL or MongoDB) for storing reviews.
-
----
-
-## **Contributing**
-
-Feel free to contribute to this project by:
-
-- Reporting bugs
-- Suggesting new features
-- Submitting pull requests
 
 ---
 
