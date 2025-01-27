@@ -3,4 +3,4 @@ HEADERS = {
     "user-agent": "Mozilla/5.0...",
     # other headers
 }
-MAX_PAGES = 10
+MAX_PAGES = 50

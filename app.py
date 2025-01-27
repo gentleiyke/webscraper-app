@@ -3,8 +3,7 @@ import asyncio
 import json
 from scraping.scraper import scrape_multiple_urls
 from data_processing.transform import reviews_to_dataframe
-from data_processing.persistence import save_to_json, save_to_csv
-import streamlit.components.v1 as components
+from data_processing.persistence import save_to_json
 
 # Custom CSS
 custom_css = """
