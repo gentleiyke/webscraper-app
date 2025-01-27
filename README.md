@@ -93,16 +93,22 @@ pip install -r requirements.txt
 
 - ** Clone the Repository **
 
+```
 git clone https://github.com/your-username/web_scraper.git
 cd web_scraper
+```
 
 ** Install Dependencies **
 
+```
 pip install -r requirements.txt
+```
 
 ** Run the Streamlit App **
 
+```
 streamlit run app.py
+```
 
 ** Interact with the App **
 
