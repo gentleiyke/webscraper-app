@@ -108,8 +108,7 @@ if st.button("Start Scraping"):
                 st.dataframe(df.head())
 
                 # CSV download option
-                # csv = df.to_csv(index=False).encode('utf-8')
-                csv = save_to_csv(df)
+                csv = df.to_csv(index=False).encode('utf-8')
                 st.download_button(
                     label=f"Download CSV for {url.split('/')[-1]}",
                     data=csv,
